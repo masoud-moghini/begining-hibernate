@@ -1,6 +1,11 @@
 package chapter01.pojo;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
+
+
+@Entity
 public class MessageEntity {
     String text;
     Long id;
@@ -13,6 +18,7 @@ public class MessageEntity {
         this.id = id;
     }
 
+    @Column(nullable = false)
     public String getText() {
         return text;
     }
@@ -21,6 +27,8 @@ public class MessageEntity {
         this.text = text;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

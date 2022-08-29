@@ -1,4 +1,4 @@
-package chapter.pojo;
+package chapter01.pojo;
 
 import java.util.Objects;
 
