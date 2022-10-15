@@ -6,9 +6,11 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.*;
+
 
 import static org.testng.Assert.assertEquals;
 
@@ -37,7 +39,12 @@ public class PersonTest {
             tx.commit();
         return p;
     }
-
+    public Person findPerson(Session session,String name){
+        Query<Person> query = session.createQuery("from Person p where p.name = :name",Person.class);
+        query.setParameter("name",name);
+        Person person = query.uniqueResult();
+        return person;
+    }
 
     @Test
     public void testSavingPerson(){

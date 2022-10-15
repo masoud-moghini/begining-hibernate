@@ -6,8 +6,13 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+
+import java.util.IntSummaryStatistics;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
 public class RankingTest {
@@ -25,50 +30,84 @@ public class RankingTest {
                 .buildSessionFactory();
     }
 
-    public Ranking saveRank(Session session,
-                         Integer rankingRate,
-                         Person observer,
-                         Person subject,
-                         Skill skill
+    private Ranking saveRank(Session session,
+                         Ranking ranking
     ){
-        Transaction tx = session.beginTransaction();
-        Ranking ranking = new Ranking();
-        ranking.setObserver(observer);
-        ranking.setSubject(subject);
-        ranking.setRanking(rankingRate);
-        ranking.setSkill(skill);
-        tx.commit();
+
+        session.persist(ranking);
         return ranking;
 
     }
 
-    public Skill createSkill(Session session,String name){
-        Transaction tx = session.beginTransaction();
-        Skill skill = new Skill();
-        skill.setName(name);
-        tx.commit();
+    public Skill findSkill(Session session,String name){
+        Query<Skill> query = session.createQuery("from Skill s where s.name= :name",Skill.class);
+        query.setParameter("name",name);
+        Skill skill = query.uniqueResult();
         return skill;
     }
-
-
-    public Person savePerson(Session session,String name){
+    public Skill createSkill(Session session,String name){
+        Skill skill = findSkill(session,name);
+        if (skill==null){
+            skill = new Skill();
+            skill.setName(name);
+            session.persist(skill);
+        }
+        return skill;
+    }
+    private Person savePerson(Session session,String name){
         Person p = new Person();
         p.setName(name);
-
-        Transaction tx = session.beginTransaction();
         session.persist(p);
-        tx.commit();
         return p;
     }
+
+    private Ranking createData(Session session ,String observerName,String subjectName,String skillName,Integer rankingRate){
+        Person observer = savePerson(session,observerName);
+        Person subject = savePerson(session,subjectName);
+        Skill skill = createSkill(session,skillName);
+        Ranking ranking = new Ranking(subject,observer,skill,rankingRate);
+        saveRank(session,ranking);
+        return ranking;
+    }
+    private void populateRankingData(){
+        try(Session session = factory.openSession()){
+            Transaction tx = session.beginTransaction();
+            createData(session,"Reza","Masoud","JAVA",3);
+            createData(session,"Jamshid","Masoud","JAVA",5);
+            createData(session,"Mahdi","Masoud","JAVA",7);
+            tx.commit();
+        }
+
+
+    }
+
+    @Test
+    public void testRankings(){
+        populateRankingData();
+        try(Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            Query<Ranking> query = session.createQuery("from Ranking r "+
+                    "where r.subject.name = :subject "+
+                    "and r.skill.name =: skill",Ranking.class
+                    );
+            query.setParameter("subject","Masoud");
+            query.setParameter("skill","JAVA");
+            IntSummaryStatistics stats = query.list().stream().collect(Collectors.summarizingInt(Ranking::getRanking));
+            long count = stats.getCount();
+            int average = (int)stats.getAverage();
+            tx.commit();
+            session.close();
+            assertEquals(count,3);
+            assertEquals(average,5);
+        }
+    }
+
     @Test
     public void saveRankTest(){
         Ranking ranking = null;
         try(Session session = factory.openSession()){
             Transaction tx = session.beginTransaction();
-            Person observer = savePerson(session,"masoud");
-            Person subject = savePerson(session,"subject");
-            Skill skill = createSkill(session,"JAVA");
-            ranking = new Ranking(subject,observer,skill,2);
+            ranking = createData(session,"masoud","subject","JAVA",2);
             tx.commit();
         }
 
