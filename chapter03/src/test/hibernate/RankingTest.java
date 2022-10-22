@@ -60,7 +60,17 @@ public class RankingTest {
         session.persist(p);
         return p;
     }
-
+    private Ranking findRanking(Session session,String subject, String skill , String observer){
+        Query<Ranking> query = session.createQuery("from Ranking r "+
+                "where r.subject.name = :subject "+
+                "and r.skill.name =: skill  " +
+                "and r.observer.name =: observer",Ranking.class
+        );
+        query.setParameter("subject", subject);
+        query.setParameter("skill", skill);
+        query.setParameter("observer",observer);
+        return query.uniqueResult();
+    }
     private Ranking createData(Session session ,String observerName,String subjectName,String skillName,Integer rankingRate){
         Person observer = savePerson(session,observerName);
         Person subject = savePerson(session,subjectName);
@@ -81,9 +91,7 @@ public class RankingTest {
 
     }
 
-    @Test
-    public void testRankings(){
-        populateRankingData();
+    public int getRankingAverage(){
         try(Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
             Query<Ranking> query = session.createQuery("from Ranking r "+
@@ -93,12 +101,10 @@ public class RankingTest {
             query.setParameter("subject","Masoud");
             query.setParameter("skill","JAVA");
             IntSummaryStatistics stats = query.list().stream().collect(Collectors.summarizingInt(Ranking::getRanking));
-            long count = stats.getCount();
             int average = (int)stats.getAverage();
             tx.commit();
             session.close();
-            assertEquals(count,3);
-            assertEquals(average,5);
+            return average;
         }
     }
 
@@ -114,4 +120,34 @@ public class RankingTest {
         assertEquals(ranking.getRanking().intValue() ,2);
     }
 
+    @Test
+    public void updateRanking(){
+        populateRankingData();
+        int average = getRankingAverage();
+        assertEquals(average,5);
+        try(Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            Ranking resultedRanking = findRanking(session,"Masoud","JAVA","Jamshid");
+            resultedRanking.setRanking(11);
+            tx.commit();
+            average = getRankingAverage();
+            assertEquals(average,7);
+        }
+    }
+
+    @Test
+    public void removeRanking(){
+        populateRankingData();
+        int average = getRankingAverage();
+        assertEquals(average,5);
+        try(Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            Ranking resultedRanking = findRanking(session,"Masoud","JAVA","Jamshid");
+            assertNotNull(resultedRanking);
+            session.delete(resultedRanking);
+            tx.commit();
+        }
+        average = getRankingAverage();
+        assertEquals(average,5);
+    }
 }
