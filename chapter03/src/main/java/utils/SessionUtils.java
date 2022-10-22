@@ -19,7 +19,7 @@ public class SessionUtils {
         initialize();
     }
 
-    private static Session getSession(){
+    public static Session getSession(){
         return getInstance().factory.openSession();
     }
 
