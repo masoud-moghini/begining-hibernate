@@ -8,14 +8,14 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SessionUtils {
-    private static final SessionUtils instance = new SessionUtils();
+public class SessionUtil {
+    private static final SessionUtil instance = new SessionUtil();
     private static final String CONFIG_NAME = "/configuration.properties";
     private SessionFactory factory;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
-    private SessionUtils() {
+    private SessionUtil() {
         initialize();
     }
 
@@ -27,7 +27,7 @@ public class SessionUtils {
         getInstance().initialize();
     }
 
-    private static SessionUtils getInstance() {
+    private static SessionUtil getInstance() {
         return instance;
     }
 
