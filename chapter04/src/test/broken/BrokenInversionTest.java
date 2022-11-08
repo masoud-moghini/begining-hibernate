@@ -49,5 +49,13 @@ public class BrokenInversionTest {
 
         assertNotNull(email.getMessage());
         assertNotNull(message.getEmail());
+        assertEquals(email.getSubject(),"hello masoud");
+        try(Session session = SessionUtil.getSession()) {
+            email = session.get(Email.class,emailId);
+            email.setSubject("hello from modified");
+            session.saveOrUpdate(email);
+        }
+
+        assertEquals(email.getSubject(),"hello from modified");
     }
 }
