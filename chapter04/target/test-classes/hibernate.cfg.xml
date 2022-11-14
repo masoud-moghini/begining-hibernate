@@ -20,7 +20,7 @@
         <mapping class="hibernate.Ranking"/>
         <mapping class="hibernate.Message"/>
         <mapping class="hibernate.Email"/>
-
+        <mapping class="hibernate.SimpleObject" />
         <mapping class="hibernate.Skill"/>
     </session-factory>
 </hibernate-configuration>
