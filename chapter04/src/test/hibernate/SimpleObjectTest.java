@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import utils.SessionUtil;
 import static hibernate.ValidateSampleObject.validate;
 public class SimpleObjectTest {
-
     @Test
     public void testMerging(){
         SimpleObject obj;
