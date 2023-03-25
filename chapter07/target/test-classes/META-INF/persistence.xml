@@ -1,0 +1,20 @@
+<persistence
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/persistence"
+        xsi:schemaLocation="
+http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+    <persistence-unit name="chapter07">
+        <class>ch07.lifecyclething.LifeCycleThing</class>
+        <class>ch07.validated.Coordinate</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://10.187.160.84:5432/jpa-persistence-unit"/>
+            <property name="jakarta.persistence.jdbc.user" value="keycloak"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

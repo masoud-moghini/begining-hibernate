@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="10" passed="9" failed="1" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[attempted to load nonexistent reference]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2023-03-18T15:30:48 IRST" name="Command line suite" finished-at="2023-03-18T15:30:53 IRST" duration-ms="4883">
+    <groups>
+    </groups>
+    <test started-at="2023-03-18T15:30:48 IRST" name="Command line test" finished-at="2023-03-18T15:30:53 IRST" duration-ms="4883">
+      <class name="validator.CoordinateTest">
+        <test-method signature="testInvalidCoordinate()[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:51 IRST" name="testInvalidCoordinate" finished-at="2023-03-18T15:30:51 IRST" duration-ms="205" status="FAIL">
+          <exception class="org.testng.TestException">
+            <message>
+              <![CDATA[
+Method CoordinateTest.testInvalidCoordinate()[pri:0, instance:validator.CoordinateTest@694abbdc] should have thrown an exception of type class javax.validation.ConstraintViolationException]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.TestException: 
+Method CoordinateTest.testInvalidCoordinate()[pri:0, instance:validator.CoordinateTest@694abbdc] should have thrown an exception of type class javax.validation.ConstraintViolationException
+at org.testng.internal.ExpectedExceptionsHolder.noException(ExpectedExceptionsHolder.java:82)
+at org.testng.internal.TestInvoker.considerExceptions(TestInvoker.java:749)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:634)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:77)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:159)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:106)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.TestException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testInvalidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:51 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:51 IRST" duration-ms="250" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:51 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:51 IRST" duration-ms="236" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:51 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:52 IRST" duration-ms="215" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[-1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:52 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:52 IRST" duration-ms="250" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:52 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:52 IRST" duration-ms="264" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[-1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:52 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:52 IRST" duration-ms="232" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[-1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:52 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:53 IRST" duration-ms="199" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+        <test-method signature="testValidCoordinate(java.lang.Integer,java.lang.Integer)[pri:0, instance:validator.CoordinateTest@694abbdc]" started-at="2023-03-18T15:30:53 IRST" name="testValidCoordinate" data-provider="validCoordinates" finished-at="2023-03-18T15:30:53 IRST" duration-ms="258" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidCoordinate -->
+      </class> <!-- validator.CoordinateTest -->
+      <class name="ch07.lifecyclething.FirstLifecycleTest">
+        <test-method signature="testLifecycle()[pri:0, instance:ch07.lifecyclething.FirstLifecycleTest@1d9b7cce]" started-at="2023-03-18T15:30:48 IRST" name="testLifecycle" finished-at="2023-03-18T15:30:51 IRST" duration-ms="2747" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[attempted to load nonexistent reference]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testLifecycle -->
+      </class> <!-- ch07.lifecyclething.FirstLifecycleTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

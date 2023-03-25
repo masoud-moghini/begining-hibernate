@@ -1,0 +1,5 @@
+hibernate\Skill.class
+utils\SessionUtil.class
+application\HibernateRankingService.class
+hibernate\Person.class
+hibernate\Ranking.class

@@ -1,0 +1,10 @@
+hibernate\SimpleObject.class
+application\HibernateRankingService.class
+hibernate\orphan\Library.class
+hibernate\Person.class
+hibernate\orphan\Book.class
+hibernate\Skill.class
+utils\SessionUtil.class
+hibernate\Message.class
+hibernate\Email.class
+hibernate\Ranking.class
