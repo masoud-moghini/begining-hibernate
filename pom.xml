@@ -12,10 +12,12 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <testng.version>7.4.0</testng.version>
-        <hibernate.core.version>6.0.0.Final</hibernate.core.version>
+        <hibernate.core.version>6.1.0.Final</hibernate.core.version>
         <h2.version>1.4.200</h2.version>
         <logback.version>1.2.3</logback.version>
         <lombok.version>1.18.18</lombok.version>
+        <ignite.version>2.10.0</ignite.version>
+
         <hibernate.validator.version>
             6.2.0.Final
         </hibernate.validator.version>
@@ -28,9 +30,18 @@
         <module>chapter02</module>
         <module>chapter03</module>
         <module>chapter04</module>
+        <module>chapter06</module>
+        <module>chapter07</module>
+        <module>chapter08</module>
+        <module>utils</module>
     </modules>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-jcache</artifactId>
+                <version>${hibernate.core.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.hibernate.orm</groupId>
                 <artifactId>hibernate-core</artifactId>
@@ -40,6 +51,12 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <scope>runtime</scope>
+                <version>42.2.18</version>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -84,6 +101,12 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>

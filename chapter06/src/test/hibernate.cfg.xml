@@ -6,7 +6,7 @@
     <session-factory>
         <!--  Database connection settings  -->
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://10.187.160.84:5432/db3</property>
+        <property name="connection.url">jdbc:postgresql://10.187.160.84:5432/db6</property>
         <property name="connection.username">keycloak</property>
         <property name="connection.password">password</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>

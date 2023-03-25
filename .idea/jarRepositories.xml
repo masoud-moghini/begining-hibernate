@@ -8,6 +8,11 @@
     </remote-repository>
     <remote-repository>
       <option name="id" value="snapshots" />
+      <option name="name" value="maven__bpms_snapshot" />
+      <option name="url" value="http://10.187.160.86:8081/repository/maven__bpms_snapshot" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
       <option name="name" value="libs-snapshot" />
       <option name="url" value="http://10.187.160.81:8081/artifactory/libs-snapshot" />
     </remote-repository>
@@ -20,6 +25,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="maven__bpms" />
+      <option name="url" value="http://10.187.160.86:8081/repository/maven__bpms" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
